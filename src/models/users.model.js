@@ -20,6 +20,12 @@ module.exports = function (app) {
     },
     firstname: { type: String, trim: true },
     lastname: { type: String, trim: true },
+    roles: {
+      type: [String],
+      enum: ['user', 'admin'],
+      default: ['user'],
+      required: true
+    },
     categories: {
       type: [mongooseClient.Schema.Types.ObjectId],
       ref: 'categories'

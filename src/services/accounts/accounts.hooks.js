@@ -16,9 +16,13 @@ module.exports = {
     create: [
       async context => {
         const userId = context.params.user._id
-        const owners = context.data.owners || []
+        let owners = context.data.owners || []
 
-        context.data.owners = [userId, ...owners]
+        if (!owners.includes(userId)) {
+          owners = [userId, ...owners]
+        }
+
+        context.data.owners = owners
       }
     ],
     update: [],

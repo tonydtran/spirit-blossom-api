@@ -6,7 +6,9 @@ module.exports = function (app) {
   const options = {
     paginate: app.get('paginate'),
     users: app.service('users'),
-    accounts: app.service('accounts')
+    accounts: app.service('accounts'),
+    multi: true,
+    whitelist: ['$populate']
   }
 
   // Initialize our service with any options it requires

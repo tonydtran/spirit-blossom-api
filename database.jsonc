@@ -1,0 +1,93 @@
+[
+  // User
+  {
+    "id": "",
+    "firstname": "",
+    "lastname": "",
+    "email": "",
+    "password": "",
+    "categories": ["Category::id"],
+    "providers": ["Provider::id"],
+    "recipients": [{
+      "accountId": "Account::id",
+      "customName": ""
+    }]
+  },
+
+
+  // Account
+  {
+    "id": "",
+    "name": "",
+    "owners": ["User::id"],
+    "balance": 0,
+    "transactions": ["Transaction::id"],
+    "recurrences": ["Recurrence::id"],
+    "roles": ["user", "admin"]
+  },
+
+
+  // Category
+  {
+    "id": "",
+    "name": "",
+    "icon": "",
+    "color": ""
+  },
+
+
+  // Provider
+  {
+    "id": "",
+    "name": ""
+  },
+
+
+  // Transaction
+  {
+    "id": "",
+    "creator": "Account::id",
+    "category": "Category::id",
+    "from": {
+      "internal": true, // or false
+      "debtor": "Account::id", // if internal === true
+      "provider": "Assurance" // or "Sécurité sociale", etc if internal === false
+    },
+    "to": {
+      "internal": true, // or false
+      "creditor": "Account::id", // if internal === true
+      "provider": "Monoprix" // or "Esso", "Carrefour", etc if internal === false
+    },
+    "amount": 0,
+    "scheduledFor": 0, // Empty if not scheduled, become empty once scheduled date is passed
+    "date": 0, // Empty if scheduled, once scheduled date is passed, get scheduled value
+    "comment": ""
+  },
+
+
+  // Recurrence
+  // Recurrence will create automatically a new transaction for month+1
+  // When created a new recurrence, create directly a scheduled transaction for new occurence
+  // Every recurrence will be created each first day of month at midnight
+  // Created transaction time has to be set at 7am
+  {
+    "id": "",
+    "creator": "Account::id",
+    "category": "Category::id",
+    "from": {
+      "internal": true, // or false
+      "debtor": "Account::id", // if internal === true
+      "provider": "Assurance" // or "Sécurité sociale", etc if internal === false
+    },
+    "to": {
+      "internal": true, // or false
+      "creditor": "Account::id", // if internal === true
+      "provider": "Monoprix" // or "Esso", "Carrefour", etc if internal === false
+    },
+    "amount": 0,
+    "comment": "",
+    "dayOfMonth": 1, // will be scheduled for this day on the next month
+    "startDate": 0,
+    "endDate": 0 // null if unlimited
+  }
+]

@@ -11,7 +11,11 @@
     "recipients": [{
       "accountId": "Account::id",
       "customName": ""
-    }]
+    }],
+    "roles": [
+      "user",
+      "admin"
+    ]
   },
 
 
@@ -22,8 +26,7 @@
     "owners": ["User::id"],
     "balance": 0,
     "transactions": ["Transaction::id"],
-    "recurrences": ["Recurrence::id"],
-    "roles": ["user", "admin"]
+    "recurrences": ["Recurrence::id"]
   },
 
 
@@ -36,7 +39,7 @@
   },
 
 
-  // Provider
+  // Supplier
   {
     "id": "",
     "name": ""

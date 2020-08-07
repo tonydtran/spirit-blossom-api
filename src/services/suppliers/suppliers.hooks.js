@@ -2,7 +2,7 @@ const { authenticate } = require('@feathersjs/authentication').hooks
 
 module.exports = {
   before: {
-    all: [ authenticate('jwt') ],
+    all: [authenticate('jwt')],
     find: [],
     get: [],
     create: [],
@@ -22,7 +22,7 @@ module.exports = {
 
         await context.app.service('users').patch(userId, {
           $push: {
-            categories: categoryId
+            suppliers: categoryId
           }
         })
       }
@@ -36,7 +36,7 @@ module.exports = {
 
         await context.app.service('users').patch(userId, {
           $pull: {
-            categories: categoryId
+            suppliers: categoryId
           }
         })
       }

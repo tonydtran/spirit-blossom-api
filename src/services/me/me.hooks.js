@@ -24,13 +24,22 @@ module.exports = {
       protect('password'),
       populate({
         schema: {
-          include: {
-            service: 'categories',
-            nameAs: 'categories',
-            parentField: 'categories',
-            childField: '_id',
-            asArray: true
-          }
+          include: [
+            {
+              service: 'categories',
+              nameAs: 'categories',
+              parentField: 'categories',
+              childField: '_id',
+              asArray: true
+            },
+            {
+              service: 'suppliers',
+              nameAs: 'suppliers',
+              parentField: 'suppliers',
+              childField: '_id',
+              asArray: true
+            }
+          ]
         }
       })
     ],

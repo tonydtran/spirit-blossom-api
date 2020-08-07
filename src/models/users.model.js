@@ -30,9 +30,9 @@ module.exports = function (app) {
       type: [mongooseClient.Schema.Types.ObjectId],
       ref: 'categories'
     },
-    providers: {
+    suppliers: {
       type: [mongooseClient.Schema.Types.ObjectId],
-      ref: 'providers'
+      ref: 'suppliers'
     },
     recipients: [{
       account: {

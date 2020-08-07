@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+
 exports.Me = class Me {
   constructor (options) {
     this.options = options || {}
@@ -16,6 +17,12 @@ exports.Me = class Me {
   }
 
   async patch (id, data, params) {
-    return data
+    const userData = await this.options.users.patch(id, data, params)
+    const userAccounts = await this.options.accounts.find(params)
+
+    return {
+      ...userData,
+      accounts: userAccounts
+    }
   }
 }

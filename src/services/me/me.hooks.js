@@ -1,6 +1,5 @@
 const { authenticate } = require('@feathersjs/authentication').hooks
 const { protect } = require('@feathersjs/authentication-local').hooks
-const { disallow } = require('feathers-hooks-common')
 
 module.exports = {
   before: {
@@ -9,7 +8,13 @@ module.exports = {
     get: [],
     create: [],
     update: [],
-    patch: [disallow('rest')], // TODO: Make it work!
+    patch: [
+      async context => {
+        const userId = context.params.user._id
+
+        context.id = userId
+      }
+    ],
     remove: []
   },
 

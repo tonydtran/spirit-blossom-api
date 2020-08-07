@@ -24,11 +24,9 @@
     "yarn": ">= 0.18.0"
   },
   "scripts": {
-    "test": "yarn run lint && yarn run jest",
     "lint": "eslint src/. test/. --config .eslintrc.json --fix",
     "dev": "nodemon src/",
-    "start": "node src/",
-    "jest": "jest  --forceExit"
+    "start": "node src/"
   },
   "standard": {
     "env": [
@@ -60,7 +58,6 @@
   "devDependencies": {
     "axios": "^0.19.2",
     "eslint": "^7.4.0",
-    "jest": "^26.2.2",
     "nodemon": "^2.0.4"
   }
 }

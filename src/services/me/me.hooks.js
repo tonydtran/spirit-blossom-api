@@ -1,5 +1,6 @@
 const { authenticate } = require('@feathersjs/authentication').hooks
 const { protect } = require('@feathersjs/authentication-local').hooks
+const { populate } = require('feathers-hooks-common')
 
 module.exports = {
   before: {
@@ -19,7 +20,20 @@ module.exports = {
   },
 
   after: {
-    all: [protect('password')],
+    all: [
+      protect('password'),
+      populate({
+        schema: {
+          include: {
+            service: 'categories',
+            nameAs: 'categories',
+            parentField: 'categories',
+            childField: '_id',
+            asArray: true
+          }
+        }
+      })
+    ],
     find: [],
     get: [],
     create: [],

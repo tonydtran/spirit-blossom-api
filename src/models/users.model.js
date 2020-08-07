@@ -18,8 +18,8 @@ module.exports = function (app) {
       type: String,
       required: [true, 'Password is required.']
     },
-    firstname: { type: String, trim: true },
-    lastname: { type: String, trim: true },
+    firstname: { type: String, trim: true, default: null },
+    lastname: { type: String, trim: true, default: null },
     roles: {
       type: [String],
       enum: ['user', 'admin'],

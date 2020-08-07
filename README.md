@@ -1,6 +1,5 @@
 # spirit-blossom-api
 
-> Accounting App API
 > Funny side project to create an Accounting app. Also a good opportuny for me to discover Feathers.js.
 > Admin GUI will be built in React, it will come later in a separate repo.
 > Client app will be built by @WendyJL in React/TypeScript.

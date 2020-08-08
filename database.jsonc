@@ -7,7 +7,7 @@
     "email": "",
     "password": "",
     "categories": ["Category::id"],
-    "providers": ["Provider::id"],
+    "suppliers": ["Supplier::id"],
     "recipients": [{
       "accountId": "Account::id",
       "customName": ""
@@ -15,7 +15,8 @@
     "roles": [
       "user",
       "admin"
-    ]
+    ],
+    "archived": false
   },
 
 
@@ -25,8 +26,21 @@
     "name": "",
     "owners": ["User::id"],
     "balance": 0,
+    "incoming": 0,
     "transactions": ["Transaction::id"],
-    "recurrences": ["Recurrence::id"]
+    "recurrences": ["Recurrence::id"],
+    "type": "", // "compte chèque", "PEL", etc
+    "company": "Company::id", // "BNP", "La banque postale", etc
+    "archived": false
+  },
+
+
+  // Company (shared)
+  {
+    "id": "",
+    "name": "",
+    "image": "",
+    "archived": false
   },
 
 
@@ -35,7 +49,8 @@
     "id": "",
     "name": "",
     "icon": "",
-    "color": ""
+    "color": "",
+    "archived": false
   },
 
 
@@ -54,16 +69,15 @@
     "from": {
       "internal": true, // or false
       "debtor": "Account::id", // if internal === true
-      "provider": "Assurance" // or "Sécurité sociale", etc if internal === false
+      "supplier": "Assurance" // or "Sécurité sociale", etc if internal === false
     },
     "to": {
       "internal": true, // or false
       "creditor": "Account::id", // if internal === true
-      "provider": "Monoprix" // or "Esso", "Carrefour", etc if internal === false
+      "supplier": "Monoprix" // or "Esso", "Carrefour", etc if internal === false
     },
     "amount": 0,
-    "scheduledFor": 0, // Empty if not scheduled, become empty once scheduled date is passed
-    "date": 0, // Empty if scheduled, once scheduled date is passed, get scheduled value
+    "date": 0, // Date object
     "comment": ""
   },
 
@@ -80,12 +94,12 @@
     "from": {
       "internal": true, // or false
       "debtor": "Account::id", // if internal === true
-      "provider": "Assurance" // or "Sécurité sociale", etc if internal === false
+      "supplier": "Assurance" // or "Sécurité sociale", etc if internal === false
     },
     "to": {
       "internal": true, // or false
       "creditor": "Account::id", // if internal === true
-      "provider": "Monoprix" // or "Esso", "Carrefour", etc if internal === false
+      "supplier": "Monoprix" // or "Esso", "Carrefour", etc if internal === false
     },
     "amount": 0,
     "comment": "",

@@ -21,9 +21,13 @@ module.exports = function (app) {
       type: String,
       trim: true,
       default: null
+    },
+    archived: {
+      type: Boolean,
+      default: false
     }
   }, {
-    timestamps: true
+    timestamps: false
   })
 
   // This is necessary to avoid model compilation errors in watch mode

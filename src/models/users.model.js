@@ -40,9 +40,11 @@ module.exports = function (app) {
         ref: 'accounts'
       },
       customName: { type: String, trim: true }
-    }]
-
-
+    }],
+    archived: {
+      type: Boolean,
+      default: false
+    }
   }, {
     timestamps: true
   })

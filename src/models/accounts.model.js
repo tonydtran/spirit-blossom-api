@@ -25,6 +25,10 @@ module.exports = function (app) {
     recurrences: {
       type: [mongooseClient.Schema.Types.ObjectId],
       ref: 'recurrences'
+    },
+    archived: {
+      type: Boolean,
+      default: false
     }
   }, {
     timestamps: true

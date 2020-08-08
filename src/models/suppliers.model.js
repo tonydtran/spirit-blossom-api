@@ -13,7 +13,7 @@ module.exports = function (app) {
       trim: true
     }
   }, {
-    timestamps: true
+    timestamps: false
   })
 
   // This is necessary to avoid model compilation errors in watch mode

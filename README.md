@@ -22,7 +22,7 @@ Getting up and running is as easy as 1, 2, 3.
 
 3. From `/config`, duplicate the `default.json` file and rename it as `development.json`.
 
-4. Replace `authentication.secret` by something stronger.
+4. Replace `authentication.secret` value by something stronger.
 
 5. Create an account and a cluster on [MongoDB Atlas](https://www.mongodb.com/cloud/atlas). It should take few minutes.
 
@@ -32,13 +32,18 @@ Getting up and running is as easy as 1, 2, 3.
 
 8. Get to **Network Access** on the left menu of MongoDB Atlas and add an IP address. Enter `0.0.0.0` as **Whitelist Entry** and confirm.
 
-9. Start the server
+9. Duplicate `migrate.example.json` file and rename it as `migrate.json`.
+
+10. Replace `dbConnectionUri` value by your mongodb server URI (the same value
+as `mongodb` in `/config/development.json`).
+
+11. Start the server
 
     ```
     yarn dev
     ```
 
-10. Server is running on `localhost:3030`.
+12. Server is running on `localhost:3030`.
 
 ## Scaffolding
 

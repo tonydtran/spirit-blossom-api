@@ -1,4 +1,5 @@
 const { authenticate } = require('@feathersjs/authentication').hooks
+const { populate } = require('feathers-hooks-common')
 
 const onlyCurrentUser = context => {
   const userId = context.params.user._id
@@ -15,38 +16,60 @@ module.exports = {
     get: [onlyCurrentUser],
     create: [
       async context => {
-        const userId = context.params.user._id
-        let owners = context.data.owners || []
+        try {
+          await context.app.service('companies').get(context.data.company._id)
+        } catch (e) {
+          const newCompany = await context.app.service('companies').create({
+            name: context.data.company.name
+          })
 
-        if (!owners.includes(userId)) {
-          owners = [userId, ...owners]
+          context.data.company = newCompany._id
+        } finally {
+          const userId = context.params.user._id
+          let owners = context.data.owners || []
+
+          if (!owners.includes(userId)) {
+            owners = [userId, ...owners]
+          }
+
+          context.data.owners = owners
         }
-
-        context.data.owners = owners
       }
     ],
     update: [],
-    patch: [onlyCurrentUser],
+    patch: [
+      onlyCurrentUser,
+      async context => {
+        try {
+          await context.app.service('companies').get(context.data.company._id)
+        } catch (e) {
+          const newCompany = await context.app.service('companies').create({
+            name: context.data.company.name
+          })
+
+          context.data.company = newCompany._id
+        }
+      }
+    ],
     remove: []
   },
 
   after: {
-    all: [],
+    all: [
+      populate({
+        schema: {
+          include: {
+            service: 'companies',
+            nameAs: 'company',
+            parentField: 'company',
+            childField: '_id'
+          }
+        }
+      })
+    ],
     find: [],
     get: [],
-    create: [
-      // async context => {
-      //   const { _id: accountId, owners } = context.result
-
-      //   owners.forEach(async ownerId => {
-      //     await context.app.service('users').patch(ownerId, {
-      //       $push: {
-      //         accounts: accountId
-      //       }
-      //     })
-      //   })
-      // }
-    ],
+    create: [],
     update: [],
     patch: [],
     remove: []

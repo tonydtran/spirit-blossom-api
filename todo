@@ -1,0 +1,12 @@
+- Hooks for "archivable" elements:
+  - Overwrite "remove" method to patch `archived` = true
+  - Create global hook with a query to omit archived elements
+  - Only show `archived` key to admins
+
+- Add a "contacts" system to invite them to a shared account
+  - Add a `contacts` key in User
+  - Add a `pendingContacts` key in User
+  - pendingContacts shape: {
+      userId: User::id,
+      type: "requesting" or "requested"
+    }

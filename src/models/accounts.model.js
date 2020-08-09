@@ -10,7 +10,11 @@ module.exports = function (app) {
   const schema = new Schema({
     name: {
       type: String,
-      required: [true, 'Name is required.'],
+      trim: true
+    },
+    type: {
+      type: String,
+      required: [true, 'Type is required.'],
       trim: true
     },
     owners: {
@@ -18,6 +22,11 @@ module.exports = function (app) {
       ref: 'users'
     },
     balance: { type: Float, default: 0.00 },
+    incoming: { type: Float, default: 0.00 },
+    company: {
+      type: mongooseClient.Schema.Types.ObjectId,
+      ref: 'companies',
+    },
     transaction: {
       type: [mongooseClient.Schema.Types.ObjectId],
       ref: 'transactions',

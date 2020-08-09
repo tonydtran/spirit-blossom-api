@@ -78,7 +78,8 @@
     },
     "amount": 0,
     "date": 0, // Date object
-    "comment": ""
+    "comment": "",
+    "processed": false // Become true when has been taken in count in account balance
   },
 
 

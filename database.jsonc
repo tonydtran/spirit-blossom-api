@@ -84,10 +84,6 @@
 
 
   // Recurrence
-  // Recurrence will create automatically a new transaction for month+1
-  // When created a new recurrence, create directly a scheduled transaction for new occurence
-  // Every recurrence will be created each first day of month at midnight
-  // Created transaction time has to be set at 7am
   {
     "id": "",
     "creator": "Account::id",

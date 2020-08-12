@@ -22,8 +22,7 @@ module.exports = function (app) {
     lastname: { type: String, trim: true, default: null },
     roles: {
       type: [String],
-      enum: ['user', 'admin'],
-      default: ['user'],
+      default: ['user'], // ['user', 'admin']
       required: true
     },
     categories: {

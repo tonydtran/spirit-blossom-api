@@ -27,7 +27,7 @@ module.exports = function (app) {
       type: mongooseClient.Schema.Types.ObjectId,
       ref: 'companies',
     },
-    transaction: {
+    transactions: {
       type: [mongooseClient.Schema.Types.ObjectId],
       ref: 'transactions',
     },

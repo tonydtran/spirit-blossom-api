@@ -4,3 +4,7 @@
   - Only show `archived` key to admins
 
 - Create invitation link to invite a user to a shared account
+
+- Define admin routes
+
+- User roles can only by edited by admin

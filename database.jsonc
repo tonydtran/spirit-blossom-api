@@ -61,10 +61,19 @@
   },
 
 
+  // Invitation
+  {
+    "id": "",
+    "from": "User::id",
+    "to": "User::id",
+    "accountId": "Account::id"
+  },
+
+
   // Transaction
   {
     "id": "",
-    "creator": "Account::id",
+    "creator": "User::id",
     "category": "Category::id",
     "from": {
       "internal": true, // or false
@@ -86,7 +95,7 @@
   // Recurrence
   {
     "id": "",
-    "creator": "Account::id",
+    "creator": "User::id",
     "category": "Category::id",
     "from": {
       "internal": true, // or false

@@ -13,7 +13,17 @@ module.exports = {
   },
 
   after: {
-    all: [],
+    all: [async context => {
+      const { params: { user }, result } = context
+      const isAdmin = user && user.roles.includes('admin')
+
+      if (!isAdmin) {
+        delete result.archived
+        delete result.__v
+        delete result.createdAt
+        delete result.updatedAt
+      }
+    }],
     find: [],
     get: [],
     create: [],

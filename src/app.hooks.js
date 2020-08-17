@@ -9,21 +9,32 @@ module.exports = {
     create: [],
     update: [disallow('rest')],
     patch: [],
-    remove: []
+    remove: [
+      async context => {
+        const { params: { user } } = context
+        const isAdmin = user && user.roles.includes('admin')
+
+        if (!isAdmin) {
+          disallow('rest')
+        }
+      }
+    ]
   },
 
   after: {
-    all: [async context => {
-      const { params: { user }, result } = context
-      const isAdmin = user && user.roles.includes('admin')
+    all: [
+      async context => {
+        const { params: { user }, result } = context
+        const isAdmin = user && user.roles.includes('admin')
 
-      if (!isAdmin) {
-        delete result.archived
-        delete result.__v
-        delete result.createdAt
-        delete result.updatedAt
+        if (!isAdmin) {
+          delete result.archived
+          delete result.__v
+          delete result.createdAt
+          delete result.updatedAt
+        }
       }
-    }],
+    ],
     find: [],
     get: [],
     create: [],
